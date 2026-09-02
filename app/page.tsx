@@ -4,110 +4,66 @@ import { useState, useEffect, useMemo } from 'react';
 import ChatInterface from '@/components/ChatInterface';
 import FeedbackReport from '@/components/FeedbackReport';
 
+const GLOBAL_LANGS = [
+  'English', 'French', 'Spanish', 'German', 'Japanese', 'Mandarin', 'Korean', 
+  'Italian', 'Portuguese', 'Arabic', 'Russian', 'Hindi', 'Turkish', 'Dutch', 
+  'Pidgin English', 'Thai', 'Vietnamese', 'Greek', 'Swedish', 'Polish'
+];
+
 const SCENARIOS = [
-  // --- THE ORIGINALS & TECH ---
-  { id: 'paris-coffee', title: 'Ordering Coffee in Paris', originalLanguage: 'French', availableLanguages: ['French', 'Spanish', 'Japanese', 'German'], category: 'Dining', role: 'Parisian Barista', desc: 'You are a customer trying to order a coffee and a pastry at a busy local cafe in Paris.' },
-  { id: 'tokyo-hotel', title: 'Checking into a Tokyo Hotel', originalLanguage: 'Japanese', availableLanguages: ['Japanese', 'Korean', 'Mandarin'], category: 'Travel', role: 'Hotel Receptionist', desc: 'You are a tourist checking into your hotel in Shinjuku, but you arrived earlier than the check-in time.' },
-  { id: 'mexico-market', title: 'Haggling in Mexico City', originalLanguage: 'Spanish', availableLanguages: ['Spanish', 'Portuguese', 'Italian'], category: 'Shopping', role: 'Market Vendor', desc: 'You are at a lively market in Mexico City trying to negotiate the price of a beautiful handmade blanket.' },
-  { id: 'noc-outage', title: 'Navigating a Network Outage', originalLanguage: 'English', availableLanguages: ['English', 'Russian', 'German'], category: 'Tech', role: 'Lead NOC Engineer', desc: 'You are coordinating with your Lead NOC Engineer to analyze downtime logs and calculate MTTR to restore enterprise network services.' },
-  { id: 'game-engine-pitch', title: 'Game Engine Architecture Pitch', originalLanguage: 'English', availableLanguages: ['English', 'Japanese', 'Korean', 'French'], category: 'Tech', role: 'Senior C++ Developer', desc: 'You are defending your choice to use Data-Oriented Design and CPU cache efficiency for a new game engine targeting legacy hardware.' },
-  { id: 'murim-cultivation', title: 'Demonic Clan Cultivation', originalLanguage: 'English', availableLanguages: ['English', 'Mandarin', 'Korean'], category: 'Pop Culture', role: 'Demonic Path Patriarch', desc: 'You are a rogue martial artist explaining your unconventional Dantian energy cultivation techniques to the Patriarch of a demonic sect.' },
+  // --- PIDGIN ENGLISH & NIGERIAN CONTEXTS ---
+  { id: 'lagos-danfo', title: 'Danfo Conductor Argument', originalLanguage: 'Pidgin English', availableLanguages: ['Pidgin English', 'English'], category: 'Travel', role: 'Danfo Conductor', desc: 'Arguing for your change after paying with a 1000 Naira note for a 200 Naira drop.' },
+  { id: 'suya-spot', title: 'Ordering Suya at Night', originalLanguage: 'Pidgin English', availableLanguages: GLOBAL_LANGS, category: 'Dining', role: 'Mai Suya', desc: 'Negotiating extra onions and asking for the beef to be extra spicy.' },
+  { id: 'nepa-wahala', title: 'NEPA Took Light', originalLanguage: 'Pidgin English', availableLanguages: ['Pidgin English'], category: 'Incidents', role: 'Angry Neighbor', desc: 'Complaining about the sudden blackout right in the middle of a Champions League final.' },
+  { id: 'balogun-market', title: 'Balogun Market Hustle', originalLanguage: 'Pidgin English', availableLanguages: ['Pidgin English', 'English', 'Mandarin'], category: 'Shopping', role: 'Fabric Vendor', desc: 'Haggling aggressively over the price of six yards of Ankara fabric.' },
+  { id: 'police-checkpoint', title: 'The Checkpoint', originalLanguage: 'Pidgin English', availableLanguages: ['Pidgin English', 'English'], category: 'Incidents', role: 'Police Officer', desc: 'Trying to explain that all your car papers are complete and valid.' },
 
+  // --- SINGLE LANGUAGE LOCKED (Cultural Immersion) ---
+  { id: 'tokyo-shrine', title: 'Shrine Etiquette', originalLanguage: 'Japanese', availableLanguages: ['Japanese'], category: 'Travel', role: 'Shinto Priest', desc: 'Asking for the proper way to purify your hands before entering the shrine.' },
+  { id: 'paris-baker', title: 'The Stale Baguette', originalLanguage: 'French', availableLanguages: ['French'], category: 'Dining', role: 'Boulanger', desc: 'Politely pointing out that the baguette you were just sold is from yesterday.' },
+  { id: 'mexico-taco', title: 'Late Night Tacos', originalLanguage: 'Spanish', availableLanguages: ['Spanish'], category: 'Dining', role: 'Taquero', desc: 'Ordering five al pastor tacos and asking which salsa is the deadliest.' },
+  { id: 'naples-nonna', title: 'Refusing More Food', originalLanguage: 'Italian', availableLanguages: ['Italian'], category: 'Dining', role: 'Italian Nonna', desc: 'Trying to politely explain you cannot possibly eat a fourth plate of pasta.' },
+  { id: 'beijing-hutong', title: 'Lost in the Alley', originalLanguage: 'Mandarin', availableLanguages: ['Mandarin'], category: 'Travel', role: 'Elderly Resident', desc: 'Asking a local elder for directions out of a winding, traditional Hutong.' },
+
+  // --- UNIVERSAL SCENARIOS (Available in ALL_LANGS) ---
+  { id: 'alien-abduction', title: 'Explaining Earth', originalLanguage: 'English', availableLanguages: GLOBAL_LANGS, category: 'Funny', role: 'Zorg the Conqueror', desc: 'Trying to convince an alien commander that Earth is not worth blowing up.' },
+  { id: 'job-interview', title: 'The Difficult Interview', originalLanguage: 'English', availableLanguages: GLOBAL_LANGS, category: 'Work', role: 'Hiring Manager', desc: 'Explaining a two-year gap in your resume during a high-stakes job interview.' },
+  { id: 'tech-support', title: 'The Blue Screen', originalLanguage: 'English', availableLanguages: GLOBAL_LANGS, category: 'Tech', role: 'IT Support Agent', desc: 'Trying to explain to IT that your computer crashed during a BIOS update.' },
+  { id: 'sentient-printer', title: 'The Printer Demands Ink', originalLanguage: 'English', availableLanguages: GLOBAL_LANGS, category: 'Funny', role: 'Office Printer', desc: 'Pleading with the printer to print your document even though cyan is at 5%.' },
+  { id: 'hotel-lockout', title: 'Locked Out Naked', originalLanguage: 'German', availableLanguages: GLOBAL_LANGS, category: 'Incidents', role: 'Night Manager', desc: 'Explaining you stepped into the hall for ice in a towel and your door locked behind you.' },
+  { id: 'salary-negotiation', title: 'Asking for a Raise', originalLanguage: 'English', availableLanguages: GLOBAL_LANGS, category: 'Work', role: 'Your Boss', desc: 'Presenting your accomplishments over the last year to justify a 15% salary increase.' },
+  { id: 'escape-room', title: 'Stuck on the First Clue', originalLanguage: 'English', availableLanguages: GLOBAL_LANGS, category: 'Funny', role: 'Game Master (via radio)', desc: 'Asking for a hint because your team has been staring at a padlock for 20 minutes.' },
+
+  // --- HIGH ENGLISH PRESENCE (But randomized options) ---
+  { id: 'noc-outage', title: 'Navigating a Network Outage', originalLanguage: 'English', availableLanguages: ['English', 'Pidgin English', 'Russian', 'German'], category: 'Tech', role: 'Lead NOC Engineer', desc: 'Coordinating with your Lead NOC Engineer to analyze downtime logs.' },
+  { id: 'game-engine-pitch', title: 'Game Engine Pitch', originalLanguage: 'English', availableLanguages: ['English', 'Japanese', 'Korean', 'Mandarin'], category: 'Tech', role: 'Senior C++ Developer', desc: 'Defending your choice to use Data-Oriented Design targeting legacy hardware.' },
+  { id: 'murim-cultivation', title: 'Demonic Clan Cultivation', originalLanguage: 'Mandarin', availableLanguages: ['Mandarin', 'English', 'Korean', 'Japanese'], category: 'Pop Culture', role: 'Demonic Path Patriarch', desc: 'Explaining unconventional Dantian energy cultivation techniques.' },
+  { id: 'berlin-startup', title: 'Pitching an App Idea', originalLanguage: 'German', availableLanguages: ['German', 'English', 'Swedish', 'French'], category: 'Work', role: 'Angel Investor', desc: 'Giving a 60-second elevator pitch for your new tech startup.' },
+  { id: 'dubai-gold', title: 'Gold Souk Negotiation', originalLanguage: 'Arabic', availableLanguages: ['Arabic', 'English', 'Hindi', 'Urdu', 'Pidgin English'], category: 'Shopping', role: 'Jeweler', desc: 'Asking about karat purity and negotiating the making charge of a necklace.' },
+  { id: 'moscow-subway', title: 'Navigating the Metro', originalLanguage: 'Russian', availableLanguages: ['Russian', 'English', 'Ukrainian', 'Polish'], category: 'Travel', role: 'Local Commuter', desc: 'Asking a local which train line goes to the Red Square.' },
+  { id: 'seoul-skincare', title: 'Skincare Routine', originalLanguage: 'Korean', availableLanguages: ['Korean', 'English', 'Mandarin', 'Japanese'], category: 'Shopping', role: 'Beauty Consultant', desc: 'Asking for recommendations for dry, sensitive skin products.' },
+  { id: 'milan-design', title: 'Creative Differences', originalLanguage: 'Italian', availableLanguages: ['Italian', 'English', 'French'], category: 'Work', role: 'Art Director', desc: 'Defending your bold design choices against an art director who wants something "safer."' },
+  
   // --- REAL LIFE: TRAVEL & TRANSIT ---
-  { id: 'berlin-train', title: 'Missed Train in Berlin', originalLanguage: 'German', availableLanguages: ['German', 'Dutch', 'Polish', 'English'], category: 'Travel', role: 'Ticket Inspector', desc: 'You boarded the wrong ICE train and need to explain your situation to the conductor.' },
-  { id: 'seoul-taxi', title: 'Lost in Seoul', originalLanguage: 'Korean', availableLanguages: ['Korean', 'Japanese', 'Mandarin'], category: 'Travel', role: 'Taxi Driver', desc: 'You are trying to give a taxi driver directions to your Airbnb without knowing the exact address.' },
-  { id: 'rome-bus', title: 'Buying a Bus Ticket', originalLanguage: 'Italian', availableLanguages: ['Italian', 'Spanish', 'French'], category: 'Travel', role: 'Tabaccheria Owner', desc: 'Purchasing a 24-hour transit pass and asking for directions to the Colosseum.' },
-  { id: 'beijing-airport', title: 'Lost Luggage Claim', originalLanguage: 'Mandarin', availableLanguages: ['Mandarin', 'Cantonese', 'English', 'Korean'], category: 'Incidents', role: 'Airport Staff', desc: 'Filing a missing baggage report after your flight to Beijing Capital International Airport.' },
-  { id: 'paris-metro', title: 'Metro Turnstile Error', originalLanguage: 'French', availableLanguages: ['French', 'Italian', 'Arabic'], category: 'Incidents', role: 'Station Attendant', desc: 'Your ticket was eaten by the machine and you are stuck behind the turnstile.' },
-  { id: 'tokyo-shinkansen', title: 'Reserving Shinkansen Seats', originalLanguage: 'Japanese', availableLanguages: ['Japanese', 'Mandarin', 'English'], category: 'Travel', role: 'Ticket Agent', desc: 'Booking two window seats on the bullet train to Kyoto for tomorrow morning.' },
-  { id: 'madrid-rental', title: 'Renting a Car', originalLanguage: 'Spanish', availableLanguages: ['Spanish', 'Portuguese', 'Italian', 'German'], category: 'Travel', role: 'Rental Agent', desc: 'Declining extra insurance while picking up your rental car at the Madrid airport.' },
-  { id: 'london-tube', title: 'Oyster Card Issues', originalLanguage: 'English', availableLanguages: ['English', 'French', 'Hindi'], category: 'Incidents', role: 'TfL Worker', desc: 'Explaining that the gate charged you maximum fare because you forgot to tap out.' },
-  { id: 'moscow-subway', title: 'Navigating the Metro', originalLanguage: 'Russian', availableLanguages: ['Russian', 'Ukrainian', 'Turkish'], category: 'Travel', role: 'Local Commuter', desc: 'Asking a local which train line goes to the Red Square.' },
-  { id: 'dubai-layover', title: 'Flight Delay Compensation', originalLanguage: 'Arabic', availableLanguages: ['Arabic', 'English', 'Hindi', 'Urdu'], category: 'Travel', role: 'Airline Rep', desc: 'Requesting a hotel voucher after your connecting flight was delayed by 12 hours.' },
-  { id: 'amsterdam-bike', title: 'Renting a Bicycle', originalLanguage: 'English', availableLanguages: ['English', 'Dutch', 'German'], category: 'Travel', role: 'Bike Shop Owner', desc: 'Asking for a daily rental rate and a heavy-duty lock.' },
-  { id: 'venice-gondola', title: 'Negotiating a Ride', originalLanguage: 'Italian', availableLanguages: ['Italian', 'French', 'Spanish', 'German'], category: 'Travel', role: 'Gondolier', desc: 'Asking for a 30-minute tour route and confirming the fixed price before boarding.' },
-
-  // --- REAL LIFE: DINING & HOSPITALITY ---
-  { id: 'naples-pizza', title: 'Customizing a Pizza', originalLanguage: 'Italian', availableLanguages: ['Italian', 'Spanish', 'Portuguese'], category: 'Dining', role: 'Pizzaiolo', desc: 'Ordering a Margherita pizza but asking for half of it to have spicy salami.' },
-  { id: 'osaka-izakaya', title: 'Ordering Drinks & Skewers', originalLanguage: 'Japanese', availableLanguages: ['Japanese', 'Korean', 'Mandarin'], category: 'Dining', role: 'Izakaya Waiter', desc: 'Ordering a round of beers and asking for the chefs recommended yakitori.' },
-  { id: 'paris-allergy', title: 'Explaining a Peanut Allergy', originalLanguage: 'French', availableLanguages: ['French', 'English', 'German'], category: 'Dining', role: 'Maitre D', desc: 'Ensuring the kitchen knows about your severe peanut allergy before ordering.' },
-  { id: 'munich-beer', title: 'Oktoberfest Table', originalLanguage: 'German', availableLanguages: ['German', 'Italian', 'Dutch'], category: 'Dining', role: 'Waitress', desc: 'Trying to order a pretzel and a liter of beer at a loud, crowded table.' },
-  { id: 'buenos-aires-steak', title: 'Sending Food Back', originalLanguage: 'Spanish', availableLanguages: ['Spanish', 'Portuguese', 'English'], category: 'Dining', role: 'Waiter', desc: 'Politely explaining that your steak is well-done instead of medium-rare.' },
-  { id: 'shanghai-dimsum', title: 'Vegetarian Options', originalLanguage: 'Mandarin', availableLanguages: ['Mandarin', 'Cantonese', 'Japanese'], category: 'Dining', role: 'Restaurant Manager', desc: 'Asking which dim sum dishes are strictly vegetarian with no pork stock.' },
-  { id: 'lisbon-seafood', title: 'Catch of the Day', originalLanguage: 'Portuguese', availableLanguages: ['Portuguese', 'Spanish', 'French'], category: 'Dining', role: 'Fisherman/Chef', desc: 'Asking about the freshest fish available and how it is prepared.' },
-  { id: 'istanbul-kebab', title: 'Spicy Level Request', originalLanguage: 'Turkish', availableLanguages: ['Turkish', 'Arabic', 'Russian'], category: 'Dining', role: 'Street Vendor', desc: 'Ordering a doner kebab and asking for it to be extra, extra spicy.' },
-  { id: 'ny-deli', title: 'The Complicated Order', originalLanguage: 'English', availableLanguages: ['English', 'Spanish', 'Hebrew'], category: 'Dining', role: 'Deli Worker', desc: 'Ordering a highly specific, customized bagel sandwich during the morning rush.' },
-  { id: 'seoul-bbq', title: 'Grill Change Request', originalLanguage: 'Korean', availableLanguages: ['Korean', 'Japanese', 'English'], category: 'Dining', role: 'Server', desc: 'Asking the server to change the burnt grill pan and ordering more soju.' },
-  { id: 'vienna-cafe', title: 'Coffee and Cake', originalLanguage: 'German', availableLanguages: ['German', 'Hungarian', 'Italian'], category: 'Dining', role: 'Barista', desc: 'Ordering a slice of Sachertorte and an Einspänner coffee.' },
-
-  // --- REAL LIFE: SHOPPING & COMMERCE ---
-  { id: 'milan-fashion', title: 'Trying on Clothes', originalLanguage: 'Italian', availableLanguages: ['Italian', 'French', 'Russian'], category: 'Shopping', role: 'Boutique Clerk', desc: 'Asking for a different size and color for a jacket you want to try on.' },
-  { id: 'tokyo-electronics', title: 'Buying a Camera', originalLanguage: 'Japanese', availableLanguages: ['Japanese', 'Mandarin', 'English', 'Korean'], category: 'Shopping', role: 'Electronics Store Staff', desc: 'Asking if the warranty on a mirrorless camera is valid internationally.' },
-  { id: 'paris-pharmacy', title: 'Buying Cold Medicine', originalLanguage: 'French', availableLanguages: ['French', 'Spanish', 'Arabic'], category: 'Shopping', role: 'Pharmacist', desc: 'Describing your sore throat and fever to get over-the-counter medication.' },
-  { id: 'bogota-market', title: 'Buying Fresh Fruit', originalLanguage: 'Spanish', availableLanguages: ['Spanish', 'Portuguese', 'English'], category: 'Shopping', role: 'Fruit Vendor', desc: 'Asking to sample some exotic fruits and buying a kilo of mangoes.' },
-  { id: 'berlin-flea', title: 'Haggling for Antiques', originalLanguage: 'German', availableLanguages: ['German', 'Polish', 'Turkish'], category: 'Shopping', role: 'Antique Dealer', desc: 'Negotiating the price of a vintage typewriter at the Mauerpark flea market.' },
-  { id: 'dubai-gold', title: 'Gold Souk Negotiation', originalLanguage: 'Arabic', availableLanguages: ['Arabic', 'Hindi', 'Urdu', 'English'], category: 'Shopping', role: 'Jeweler', desc: 'Asking about the karat purity and negotiating the making charge of a necklace.' },
-  { id: 'seoul-skincare', title: 'Skincare Routine', originalLanguage: 'Korean', availableLanguages: ['Korean', 'Mandarin', 'Japanese'], category: 'Shopping', role: 'Beauty Consultant', desc: 'Asking for recommendations for dry, sensitive skin products.' },
-  { id: 'london-tailor', title: 'Suit Alterations', originalLanguage: 'English', availableLanguages: ['English', 'Italian', 'French'], category: 'Shopping', role: 'Tailor', desc: 'Requesting the trousers be hemmed and the jacket sleeves shortened.' },
-  { id: 'taipei-nightmarket', title: 'Finding a specific stall', originalLanguage: 'Mandarin', availableLanguages: ['Mandarin', 'Hakka', 'Japanese'], category: 'Everyday', role: 'Street Sweeper', desc: 'Asking for directions to the famous stinky tofu stall you read about online.' },
-  { id: 'rio-surfshop', title: 'Renting a Surfboard', originalLanguage: 'Portuguese', availableLanguages: ['Portuguese', 'Spanish', 'English'], category: 'Shopping', role: 'Shop Owner', desc: 'Renting a longboard for the day and asking about the current tide conditions.' },
-  { id: 'hardware-store', title: 'DIY Project Supplies', originalLanguage: 'English', availableLanguages: ['English', 'Spanish', 'German'], category: 'Shopping', role: 'Store Clerk', desc: 'Trying to find the right sealant and primer for a bathroom renovation project.' },
-
-  // --- WORK & PROFESSIONAL ---
-  { id: 'job-interview', title: 'The Difficult Interview', originalLanguage: 'English', availableLanguages: ['English', 'German', 'Japanese', 'Mandarin'], category: 'Work', role: 'Hiring Manager', desc: 'Explaining a two-year gap in your resume during a high-stakes job interview.' },
-  { id: 'salary-negotiation', title: 'Asking for a Raise', originalLanguage: 'English', availableLanguages: ['English', 'French', 'Spanish'], category: 'Work', role: 'Your Boss', desc: 'Presenting your accomplishments over the last year to justify a 15% salary increase.' },
-  { id: 'tokyo-business', title: 'Exchanging Meishi (Cards)', originalLanguage: 'Japanese', availableLanguages: ['Japanese', 'Korean', 'Mandarin'], category: 'Work', role: 'Potential Client', desc: 'Formally introducing yourself and exchanging business cards at a corporate mixer.' },
-  { id: 'paris-client', title: 'Pushing a Deadline', originalLanguage: 'French', availableLanguages: ['French', 'English', 'Italian'], category: 'Work', role: 'Frustrated Client', desc: 'Explaining why the project deliverable will be delayed by three days.' },
-  { id: 'berlin-startup', title: 'Pitching an App Idea', originalLanguage: 'German', availableLanguages: ['German', 'English', 'Swedish'], category: 'Work', role: 'Angel Investor', desc: 'Giving a 60-second elevator pitch for your new tech startup.' },
-  { id: 'madrid-colleague', title: 'Covering a Shift', originalLanguage: 'Spanish', availableLanguages: ['Spanish', 'Portuguese', 'Catalan', 'English'], category: 'Work', role: 'Coworker', desc: 'Asking a colleague to cover your Friday afternoon shift because of a family emergency.' },
-  { id: 'hr-complaint', title: 'Filing a Complaint', originalLanguage: 'English', availableLanguages: ['English', 'Spanish', 'French'], category: 'Work', role: 'HR Representative', desc: 'Reporting a coworker who keeps stealing your labeled lunch from the breakroom fridge.' },
-  { id: 'beijing-factory', title: 'Quality Control Issue', originalLanguage: 'Mandarin', availableLanguages: ['Mandarin', 'Cantonese', 'English'], category: 'Work', role: 'Factory Floor Manager', desc: 'Discussing a defect found in the latest batch of manufactured components.' },
-  { id: 'milan-design', title: 'Creative Differences', originalLanguage: 'Italian', availableLanguages: ['Italian', 'French', 'English'], category: 'Work', role: 'Art Director', desc: 'Defending your bold design choices against an art director who wants something "safer."' },
-  { id: 'seoul-meeting', title: 'Leading a Standup', originalLanguage: 'Korean', availableLanguages: ['Korean', 'Japanese', 'English'], category: 'Work', role: 'Junior Developer', desc: 'Asking your team for status updates and identifying blockers for the week.' },
-  { id: 'remote-onboarding', title: 'IT Setup Issue', originalLanguage: 'English', availableLanguages: ['English', 'Hindi', 'German'], category: 'Tech', role: 'Helpdesk Admin', desc: 'Explaining that your corporate VPN credentials are not working on your first day.' },
-
-  // --- INCIDENTS & TROUBLESHOOTING ---
-  { id: 'lost-wallet', title: 'Reporting a Stolen Wallet', originalLanguage: 'Spanish', availableLanguages: ['Spanish', 'Italian', 'French'], category: 'Incidents', role: 'Police Officer', desc: 'Filing a police report after your wallet was pickpocketed on the subway.' },
-  { id: 'broken-pipe', title: 'Plumbing Emergency', originalLanguage: 'English', availableLanguages: ['English', 'German', 'Russian'], category: 'Incidents', role: 'Plumber', desc: 'Frantically explaining over the phone that a pipe burst and your kitchen is flooding.' },
-  { id: 'car-accident', title: 'Fender Bender', originalLanguage: 'French', availableLanguages: ['French', 'Spanish', 'Arabic'], category: 'Incidents', role: 'Other Driver', desc: 'Exchanging insurance info and staying calm after a minor traffic collision.' },
-  { id: 'hotel-lockout', title: 'Locked Out Naked', originalLanguage: 'German', availableLanguages: ['German', 'English', 'Dutch'], category: 'Incidents', role: 'Night Manager', desc: 'Explaining you stepped into the hall for ice in a towel and your door locked behind you.' },
-  { id: 'tech-support', title: 'The Blue Screen of Death', originalLanguage: 'English', availableLanguages: ['English', 'Hindi', 'Mandarin'], category: 'Tech', role: 'IT Support Agent', desc: 'Trying to explain to IT that your computer crashed during a BIOS update.' },
-  { id: 'wrong-food', title: 'Severe Allergy Mix-up', originalLanguage: 'Japanese', availableLanguages: ['Japanese', 'Korean', 'English'], category: 'Incidents', role: 'Restaurant Manager', desc: 'Urgently explaining that you were served shellfish despite your explicit allergy warning.' },
-  { id: 'lost-child', title: 'Lost at the Mall', originalLanguage: 'Italian', availableLanguages: ['Italian', 'Spanish', 'French'], category: 'Incidents', role: 'Security Guard', desc: 'Providing a physical description of your little brother who wandered off.' },
-  { id: 'customs-flag', title: 'Customs Interrogation', originalLanguage: 'Mandarin', availableLanguages: ['Mandarin', 'Russian', 'English'], category: 'Incidents', role: 'Border Agent', desc: 'Explaining why you have six identical laptops in your checked luggage.' },
-  { id: 'vet-emergency', title: 'Dog Ate Chocolate', originalLanguage: 'Portuguese', availableLanguages: ['Portuguese', 'Spanish', 'English'], category: 'Incidents', role: 'Veterinarian', desc: 'Rushing into the clinic explaining your dog just ate a large chocolate bar.' },
-  { id: 'noise-complaint', title: 'The Loud Neighbor', originalLanguage: 'Russian', availableLanguages: ['Russian', 'Turkish', 'English'], category: 'Incidents', role: 'Upstairs Neighbor', desc: 'Knocking on the ceiling and then going upstairs to ask them to turn the music down at 3 AM.' },
-
-  // --- FUNNY & ABSURD (No Magic/Fantasy) ---
-  { id: 'pigeon-fight', title: 'Arguing with a Pigeon', originalLanguage: 'English', availableLanguages: ['English', 'French', 'Italian'], category: 'Funny', role: 'A Very Smart Pigeon', desc: 'Negotiating a peace treaty over the remaining half of your sandwich.' },
-  { id: 'gordon-ramsay', title: 'The Raw Risotto', originalLanguage: 'English', availableLanguages: ['English', 'Italian', 'French'], category: 'Funny', role: 'Angry Celebrity Chef', desc: 'Defending your terrible, mushy risotto on a high-stakes cooking reality show.' },
-  { id: 'sentient-printer', title: 'The Printer Demands Ink', originalLanguage: 'English', availableLanguages: ['English', 'German', 'Japanese'], category: 'Funny', role: 'Office Printer', desc: 'Pleading with the printer to print your document even though cyan is at 5%.' },
-  { id: 'cat-boss', title: 'Performance Review with a Cat', originalLanguage: 'English', availableLanguages: ['English', 'Korean', 'Russian'], category: 'Funny', role: 'Mr. Whiskers (CEO)', desc: 'Explaining your quarterly KPIs to your boss, who happens to be a cat.' },
-  { id: 'flat-earther', title: 'The Flat Earther Uber', originalLanguage: 'English', availableLanguages: ['English', 'Spanish', 'Portuguese'], category: 'Funny', role: 'Uber Driver', desc: 'Trying to politely change the subject while your driver explains the ice wall.' },
-  { id: 'gym-bro', title: 'Hovering at the Squat Rack', originalLanguage: 'English', availableLanguages: ['English', 'German', 'Russian'], category: 'Everyday', role: 'Impatient Gym Bro', desc: 'Telling someone you still have 4 sets left and no, they cannot work in.' },
-  { id: 'coffee-snob', title: 'The Over-Extraction', originalLanguage: 'English', availableLanguages: ['English', 'Italian', 'French'], category: 'Funny', role: 'Pretentious Barista', desc: 'Complaining that your pour-over tastes sour, leading to a lecture on grind size.' },
-  { id: 'mechanic-scam', title: 'Blinker Fluid', originalLanguage: 'English', availableLanguages: ['English', 'Spanish', 'Arabic'], category: 'Funny', role: 'Shady Mechanic', desc: 'Confronting a mechanic who tried to charge you $200 for "blinker fluid."' },
-  { id: 'board-game', title: 'The Rules Lawyer', originalLanguage: 'English', availableLanguages: ['English', 'German', 'Mandarin'], category: 'Everyday', role: 'Competitive Friend', desc: 'Arguing over a highly specific edge-case rule in Settlers of Catan.' },
-  { id: 'escape-room', title: 'Stuck on the First Clue', originalLanguage: 'English', availableLanguages: ['English', 'Japanese', 'French'], category: 'Funny', role: 'Game Master (via radio)', desc: 'Asking for a hint because your team has been staring at a padlock for 20 minutes.' },
-
+  { id: 'berlin-train', title: 'Missed Train in Berlin', originalLanguage: 'German', availableLanguages: ['German', 'English', 'Dutch'], category: 'Travel', role: 'Ticket Inspector', desc: 'You boarded the wrong ICE train and need to explain your situation.' },
+  { id: 'seoul-taxi', title: 'Lost in Seoul', originalLanguage: 'Korean', availableLanguages: ['Korean', 'English'], category: 'Travel', role: 'Taxi Driver', desc: 'Trying to give a taxi driver directions to your Airbnb without knowing the exact address.' },
+  { id: 'rome-bus', title: 'Buying a Bus Ticket', originalLanguage: 'Italian', availableLanguages: ['Italian', 'English', 'Spanish'], category: 'Travel', role: 'Tabaccheria Owner', desc: 'Purchasing a 24-hour transit pass and asking for directions.' },
+  { id: 'beijing-airport', title: 'Lost Luggage Claim', originalLanguage: 'Mandarin', availableLanguages: ['Mandarin', 'English'], category: 'Incidents', role: 'Airport Staff', desc: 'Filing a missing baggage report after your flight.' },
+  { id: 'paris-metro', title: 'Metro Turnstile Error', originalLanguage: 'French', availableLanguages: ['French', 'English'], category: 'Incidents', role: 'Station Attendant', desc: 'Your ticket was eaten by the machine and you are stuck.' },
+  { id: 'tokyo-shinkansen', title: 'Reserving Shinkansen Seats', originalLanguage: 'Japanese', availableLanguages: ['Japanese', 'English'], category: 'Travel', role: 'Ticket Agent', desc: 'Booking two window seats on the bullet train to Kyoto.' },
+  
+  // --- COMEDY & ABSURD (Mostly English & Pidgin) ---
+  { id: 'pigeon-fight', title: 'Arguing with a Pigeon', originalLanguage: 'English', availableLanguages: ['English', 'Pidgin English', 'French'], category: 'Funny', role: 'A Very Smart Pigeon', desc: 'Negotiating a peace treaty over the remaining half of your sandwich.' },
+  { id: 'gordon-ramsay', title: 'The Raw Risotto', originalLanguage: 'English', availableLanguages: ['English', 'Italian', 'Pidgin English'], category: 'Funny', role: 'Angry Celebrity Chef', desc: 'Defending your terrible, mushy risotto on a cooking reality show.' },
+  { id: 'flat-earther', title: 'The Flat Earther Uber', originalLanguage: 'English', availableLanguages: ['English', 'Spanish', 'Pidgin English'], category: 'Funny', role: 'Uber Driver', desc: 'Trying to politely change the subject while your driver explains the ice wall.' },
+  { id: 'cat-boss', title: 'Performance Review with a Cat', originalLanguage: 'English', availableLanguages: GLOBAL_LANGS, category: 'Funny', role: 'Mr. Whiskers (CEO)', desc: 'Explaining your quarterly KPIs to your boss, who happens to be a cat.' },
+  
   // --- POP CULTURE / EASTER EGGS ---
-  { id: 'parks-and-rec', title: 'Hardware Store Confidence', originalLanguage: 'English', availableLanguages: ['English', 'German', 'Russian'], category: 'Pop Culture', role: 'Gruff Store Manager', desc: 'Trying to ask for help finding a screw, only to be told "I know more than you."' },
-  { id: 'office-space', title: 'The TPS Report', originalLanguage: 'English', availableLanguages: ['English', 'Japanese', 'French'], category: 'Pop Culture', role: 'Micromanaging Boss', desc: 'Explaining that you did, in fact, get the memo about the new cover sheets.' },
-  { id: 'matrix-pill', title: 'The Purple Pill', originalLanguage: 'English', availableLanguages: ['English', 'Mandarin', 'Spanish'], category: 'Pop Culture', role: 'Morpheus', desc: 'Refusing both the red and blue pills and asking if he has a grape-flavored one.' },
+  { id: 'parks-and-rec', title: 'Hardware Store Confidence', originalLanguage: 'English', availableLanguages: ['English', 'Russian', 'German'], category: 'Pop Culture', role: 'Gruff Store Manager', desc: 'Trying to ask for help finding a screw, only to be told "I know more than you."' },
+  { id: 'office-space', title: 'The TPS Report', originalLanguage: 'English', availableLanguages: ['English', 'Japanese'], category: 'Pop Culture', role: 'Micromanaging Boss', desc: 'Explaining that you did, in fact, get the memo about the new cover sheets.' },
+  { id: 'matrix-pill', title: 'The Purple Pill', originalLanguage: 'English', availableLanguages: ['English', 'Mandarin', 'Pidgin English'], category: 'Pop Culture', role: 'Morpheus', desc: 'Refusing both the red and blue pills and asking if he has a grape-flavored one.' },
   { id: 'terminator-clothes', title: 'I Need Your Clothes', originalLanguage: 'English', availableLanguages: ['English', 'German', 'Russian'], category: 'Pop Culture', role: 'Cyborg Assassin', desc: 'Refusing to give up your boots and motorcycle to a naked Austrian bodybuilder.' },
-  { id: 'portal-glados', title: 'The Cake is a Lie', originalLanguage: 'English', availableLanguages: ['English', 'Korean', 'Italian'], category: 'Pop Culture', role: 'Passive Aggressive AI', desc: 'Demanding the cake you were promised after finishing a dangerous test chamber.' },
-
-  // --- MISCELLANEOUS REALITY ---
-  { id: 'wedding-toast', title: 'The Ruined Toast', originalLanguage: 'English', availableLanguages: ['English', 'Spanish', 'Hindi'], category: 'Incidents', role: 'Angry Bride', desc: 'Apologizing for bringing up the grooms ex during your best man speech.' },
-  { id: 'tattoo-regret', title: 'Cover-up Consultation', originalLanguage: 'English', availableLanguages: ['English', 'Portuguese', 'Japanese'], category: 'Everyday', role: 'Tattoo Artist', desc: 'Asking an artist to cover up a terrible tattoo you got on a dare.' },
-  { id: 'karaoke-hog', title: 'Give up the Mic', originalLanguage: 'Japanese', availableLanguages: ['Japanese', 'Korean', 'Mandarin', 'English'], category: 'Everyday', role: 'Drunk Salaryman', desc: 'Politely asking a stranger to stop singing and pass the karaoke tablet.' },
-  { id: 'spa-mixup', title: 'Wrong Massage', originalLanguage: 'Thai', availableLanguages: ['Thai', 'English', 'Mandarin'], category: 'Incidents', role: 'Masseuse', desc: 'Trying to explain you wanted the relaxing massage, not the deep tissue bone-crusher.' },
-  { id: 'vintage-thrifting', title: 'Thrift Store Find', originalLanguage: 'English', availableLanguages: ['English', 'French', 'Italian'], category: 'Shopping', role: 'Cashier', desc: 'Trying to buy a jacket that has no price tag without them marking it up.' },
-  { id: 'movie-talker', title: 'The Cinema Chatter', originalLanguage: 'English', availableLanguages: ['English', 'Spanish', 'German'], category: 'Everyday', role: 'Noisy Moviegoer', desc: 'Politely but firmly asking the person behind you to stop explaining the plot to their friend.' },
-  { id: 'parking-ticket', title: 'Arguing a Ticket', originalLanguage: 'English', availableLanguages: ['English', 'French', 'Italian'], category: 'Incidents', role: 'Meter Maid', desc: 'Begging them not to print the ticket because you were only 2 minutes late.' },
-  { id: 'bad-haircut', title: 'The Horrible Fade', originalLanguage: 'English', availableLanguages: ['English', 'Turkish', 'Arabic'], category: 'Everyday', role: 'Barber', desc: 'Trying to explain that they cut way too much off the top without hurting their feelings.' },
-  { id: 'return-policy', title: 'Returning Used Shoes', originalLanguage: 'English', availableLanguages: ['English', 'German', 'Mandarin'], category: 'Shopping', role: 'Retail Manager', desc: 'Trying to return shoes you clearly wore outside because they "hurt your feet."' },
-  { id: 'dietary-restrictions', title: 'The Picky Eater', originalLanguage: 'English', availableLanguages: ['English', 'Italian', 'French'], category: 'Dining', role: 'Exasperated Waiter', desc: 'Ordering a salad but substituting almost every single ingredient.' }
+  { id: 'portal-glados', title: 'The Cake is a Lie', originalLanguage: 'English', availableLanguages: ['English', 'Korean', 'Pidgin English'], category: 'Pop Culture', role: 'Passive Aggressive AI', desc: 'Demanding the cake you were promised after finishing a dangerous test chamber.' }
 ];
 
 type GameState = 'select' | 'chat' | 'review';
@@ -179,20 +135,18 @@ export default function Home() {
   };
 
   const handleCardLanguageChange = (e: React.ChangeEvent<HTMLSelectElement>, scenarioId: string) => {
-    e.stopPropagation(); // Prevent the click from launching the scenario
+    e.stopPropagation(); 
     setCardLanguages(prev => ({
       ...prev,
       [scenarioId]: e.target.value
     }));
   };
 
-  // Apply filters
   const filteredScenarios = displayScenarios.filter(scenario => {
     const matchesSearch = 
       scenario.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
       scenario.desc.toLowerCase().includes(searchQuery.toLowerCase());
     
-    // Check if the filtered language is in the array of available languages for this scenario
     const matchesLang = selectedLanguageFilter === 'All' || scenario.availableLanguages.includes(selectedLanguageFilter);
     const matchesCat = selectedCategory === 'All' || scenario.category === selectedCategory;
     
@@ -293,6 +247,8 @@ export default function Home() {
                             className={`px-3 py-1 pr-6 text-xs font-bold uppercase tracking-wider rounded-full cursor-pointer focus:outline-none focus:ring-2 focus:ring-primary/40 appearance-none transition-colors border ${
                               currentLang === 'English' 
                                 ? 'bg-emerald-50 border-emerald-200 text-emerald-700 hover:bg-emerald-100' 
+                                : currentLang === 'Pidgin English'
+                                ? 'bg-orange-50 border-orange-200 text-orange-700 hover:bg-orange-100'
                                 : 'bg-indigo-50 border-indigo-200 text-primary hover:bg-indigo-100'
                             }`}
                           >
@@ -301,7 +257,10 @@ export default function Home() {
                             ))}
                           </select>
                           <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2">
-                            <svg className={`fill-current h-3 w-3 ${currentLang === 'English' ? 'text-emerald-700' : 'text-primary'}`} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+                            <svg className={`fill-current h-3 w-3 ${
+                              currentLang === 'English' ? 'text-emerald-700' : 
+                              currentLang === 'Pidgin English' ? 'text-orange-700' : 'text-primary'
+                            }`} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
                           </div>
                         </div>
                         
