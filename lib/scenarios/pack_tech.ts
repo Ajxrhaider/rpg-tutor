@@ -1,0 +1,34 @@
+import { ALL_LANGUAGES, type ScenarioType } from './types';
+
+export const techScenarios: ScenarioType[] = [
+  // TECH
+  { id: 'tch-noc-outage', title: 'Navigating a Network Outage', originalLanguage: 'English', availableLanguages: ['English', 'Russian', 'German', 'Pidgin English', 'Hindi'], category: 'Tech', role: 'Lead NOC Engineer', desc: 'Coordinate with your Lead NOC Engineer to analyze downtime logs and calculate MTTR.' },
+  { id: 'tch-game-engine', title: 'Game Engine Architecture Pitch', originalLanguage: 'English', availableLanguages: ALL_LANGUAGES, category: 'Tech', role: 'Senior C++ Developer', desc: 'Defend your choice to use Data-Oriented Design for a new engine targeting legacy hardware.' },
+  { id: 'tch-git-merge', title: 'Merge Conflict', originalLanguage: 'Pidgin English', availableLanguages: ['Pidgin English', 'English', 'Mandarin', 'Russian'], category: 'Tech', role: 'Annoyed Colleague', desc: 'Argue over whose code should survive a massive git merge conflict.' },
+  { id: 'tch-server-fire', title: 'Server Room Fire', originalLanguage: 'German', availableLanguages: ['German', 'English', 'Dutch'], category: 'Tech', role: 'Data Center Manager', desc: 'Report that the primary database rack is literally on fire.' },
+  { id: 'tch-hacker-breach', title: 'The Cyber Attack', originalLanguage: 'Russian', availableLanguages: ['Russian', 'English', 'Mandarin', 'Korean'], category: 'Tech', role: 'Panicked CEO', desc: 'Explain to your boss that ransomware has locked down the entire company network.' },
+  { id: 'tch-legacy-code', title: 'The 20-Year-Old Codebase', originalLanguage: 'Hindi', availableLanguages: ['Hindi', 'English', 'Japanese'], category: 'Tech', role: 'Senior Architect', desc: 'Try to understand an undocumented monolithic system written entirely in Perl.' },
+  { id: 'tch-prod-deploy', title: 'Deploying on a Friday', originalLanguage: 'Turkish', availableLanguages: ['Turkish', 'English'], category: 'Tech', role: 'DevOps Engineer', desc: 'Argue with DevOps about why your hotfix absolutely must go out at 4:55 PM on a Friday.' },
+  { id: 'tch-blue-screen', title: 'The Blue Screen of Death', originalLanguage: 'English', availableLanguages: ['English', 'Hindi', 'Mandarin', 'Pidgin English'], category: 'Tech', role: 'IT Support Agent', desc: 'Try to explain to IT that your computer crashed during a BIOS update.' },
+  
+  // WORK
+  { id: 'wrk-job-interview', title: 'The Difficult Interview', originalLanguage: 'English', availableLanguages: ALL_LANGUAGES, category: 'Work', role: 'Hiring Manager', desc: 'Explain a two-year gap in your resume during a high-stakes job interview.' },
+  { id: 'wrk-salary', title: 'Asking for a Raise', originalLanguage: 'Spanish', availableLanguages: ['Spanish', 'English', 'French', 'Portuguese'], category: 'Work', role: 'Your Boss', desc: 'Present your accomplishments over the last year to justify a 15% salary increase.' },
+  { id: 'wrk-tokyo-meishi', title: 'Exchanging Meishi (Cards)', originalLanguage: 'Japanese', availableLanguages: ['Japanese'], category: 'Work', role: 'Potential Client', desc: 'Formally introduce yourself and exchange business cards at a corporate mixer.' },
+  { id: 'wrk-paris-client', title: 'Pushing a Deadline', originalLanguage: 'French', availableLanguages: ['French', 'English', 'Italian'], category: 'Work', role: 'Frustrated Client', desc: 'Explain why the project deliverable will be delayed by three days.' },
+  { id: 'wrk-hr-complaint', title: 'Filing a Complaint', originalLanguage: 'English', availableLanguages: ['English', 'German', 'Dutch'], category: 'Work', role: 'HR Representative', desc: 'Report a coworker who keeps stealing your labeled lunch from the fridge.' },
+  { id: 'wrk-beijing-factory', title: 'Quality Control', originalLanguage: 'Mandarin', availableLanguages: ['Mandarin', 'English'], category: 'Work', role: 'Floor Manager', desc: 'Discuss a serious defect found in the latest batch of manufactured components.' },
+  { id: 'wrk-mumbai-outsourcing', title: 'Timezone Misalignment', originalLanguage: 'Hindi', availableLanguages: ['Hindi', 'English'], category: 'Work', role: 'Project Manager', desc: 'Politely explain that scheduling daily standups at 3 AM your time is not sustainable.' },
+  { id: 'wrk-dubai-contract', title: 'Contract Negotiation', originalLanguage: 'Arabic', availableLanguages: ['Arabic', 'English'], category: 'Work', role: 'Procurement Officer', desc: 'Discuss the payment milestones for a newly signed construction contract.' },
+  { id: 'wrk-milan-design', title: 'Creative Differences', originalLanguage: 'Italian', availableLanguages: ['Italian', 'French', 'English'], category: 'Work', role: 'Art Director', desc: 'Defend your bold design choices against an art director who wants something "safer."' },
+  
+  // EVERYDAY
+  { id: 'evy-gym-bro', title: 'Hovering at the Squat Rack', originalLanguage: 'English', availableLanguages: ['English', 'Russian', 'German', 'Italian'], category: 'Everyday', role: 'Impatient Gym Bro', desc: 'Tell someone you still have 4 sets left and no, they cannot work in.' },
+  { id: 'evy-coffee-snob', title: 'The Over-Extraction', originalLanguage: 'Italian', availableLanguages: ['Italian', 'English', 'French'], category: 'Everyday', role: 'Pretentious Barista', desc: 'Complain that your pour-over tastes sour, leading to a lecture on grind size.' },
+  { id: 'evy-board-game', title: 'The Rules Lawyer', originalLanguage: 'English', availableLanguages: ALL_LANGUAGES, category: 'Everyday', role: 'Competitive Friend', desc: 'Argue over a highly specific edge-case rule in a tabletop game.' },
+  { id: 'evy-movie-talker', title: 'The Cinema Chatter', originalLanguage: 'Hindi', availableLanguages: ['Hindi', 'English', 'Mandarin'], category: 'Everyday', role: 'Noisy Moviegoer', desc: 'Politely ask the person behind you to stop explaining the plot to their friend.' },
+  { id: 'evy-tattoo-regret', title: 'Cover-up Consultation', originalLanguage: 'Spanish', availableLanguages: ['Spanish', 'English', 'Portuguese'], category: 'Everyday', role: 'Tattoo Artist', desc: 'Ask an artist to cover up a terrible tattoo you got on a dare.' },
+  { id: 'evy-barber', title: 'The Terrible Fade', originalLanguage: 'Arabic', availableLanguages: ['Arabic', 'English', 'Turkish'], category: 'Everyday', role: 'Proud Barber', desc: 'Try to explain that he cut way too much off without hurting his feelings.' },
+  { id: 'evy-karaoke-hog', title: 'Give up the Mic', originalLanguage: 'Korean', availableLanguages: ['Korean', 'Japanese', 'English', 'Mandarin'], category: 'Everyday', role: 'Drunk Salaryman', desc: 'Politely ask a stranger to stop singing and pass the karaoke tablet.' },
+  { id: 'evy-noise-complaint', title: 'The Loud Neighbor', originalLanguage: 'Russian', availableLanguages: ['Russian', 'English', 'German'], category: 'Everyday', role: 'Upstairs Neighbor', desc: 'Go upstairs at 3 AM to beg them to stop playing hardbass.' }
+];

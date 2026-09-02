@@ -1,0 +1,26 @@
+import { ALL_LANGUAGES, type ScenarioType } from './types';
+
+export const chaosScenarios: ScenarioType[] = [
+  // INCIDENTS
+  { id: 'inc-lost-wallet', title: 'Reporting a Stolen Wallet', originalLanguage: 'Spanish', availableLanguages: ['Spanish', 'English', 'French', 'Italian'], category: 'Incidents', role: 'Police Officer', desc: 'File a police report after your wallet was pickpocketed on the subway.' },
+  { id: 'inc-broken-pipe', title: 'Plumbing Emergency', originalLanguage: 'Russian', availableLanguages: ['Russian', 'English'], category: 'Incidents', role: 'Plumber', desc: 'Frantically explain over the phone that a pipe burst and your kitchen is flooding.' },
+  { id: 'inc-nepa-light', title: 'Transformer Blew', originalLanguage: 'Pidgin English', availableLanguages: ['Pidgin English', 'English'], category: 'Incidents', role: 'Neighbour', desc: 'Discuss how to contribute money to fix the street transformer.' },
+  { id: 'inc-hotel-lockout', title: 'Locked Out Naked', originalLanguage: 'German', availableLanguages: ALL_LANGUAGES, category: 'Incidents', role: 'Night Manager', desc: 'Explain you stepped into the hall in a towel and your door locked behind you.' },
+  { id: 'inc-customs-flag', title: 'Customs Interrogation', originalLanguage: 'Mandarin', availableLanguages: ['Mandarin', 'English', 'Russian'], category: 'Incidents', role: 'Border Agent', desc: 'Explain why you have six identical laptops in your checked luggage.' },
+  { id: 'inc-vet-emergency', title: 'Dog Ate Chocolate', originalLanguage: 'Portuguese', availableLanguages: ['Portuguese', 'English', 'Spanish'], category: 'Incidents', role: 'Veterinarian', desc: 'Rush into the clinic explaining your dog just ate a large chocolate bar.' },
+  { id: 'inc-car-accident', title: 'Fender Bender', originalLanguage: 'Italian', availableLanguages: ['Italian', 'English', 'French', 'Arabic'], category: 'Incidents', role: 'Angry Driver', desc: 'Try to exchange insurance information with a driver who is screaming at you.' },
+  { id: 'inc-lost-child', title: 'Lost at the Mall', originalLanguage: 'Dutch', availableLanguages: ['Dutch', 'English', 'German'], category: 'Incidents', role: 'Security Guard', desc: 'Give a physical description of your little brother who wandered off in the crowd.' },
+  { id: 'inc-wrong-food', title: 'Severe Allergy Mix-up', originalLanguage: 'Japanese', availableLanguages: ['Japanese', 'English'], category: 'Incidents', role: 'Restaurant Manager', desc: 'Urgently explain that you were served shellfish despite your explicit allergy warning.' },
+  
+  // FUNNY & ABSURD
+  { id: 'fun-pigeon-fight', title: 'Arguing with a Pigeon', originalLanguage: 'English', availableLanguages: ALL_LANGUAGES, category: 'Funny', role: 'A Very Smart Pigeon', desc: 'Negotiate a peace treaty over the remaining half of your sandwich.' },
+  { id: 'fun-sentient-printer', title: 'The Printer Demands Ink', originalLanguage: 'Japanese', availableLanguages: ['Japanese', 'English', 'Pidgin English', 'Mandarin'], category: 'Funny', role: 'Office Printer', desc: 'Plead with the printer to print your document even though cyan is at 5%.' },
+  { id: 'fun-flat-earther', title: 'The Flat Earther Uber', originalLanguage: 'Portuguese', availableLanguages: ['Portuguese', 'English', 'Spanish'], category: 'Funny', role: 'Uber Driver', desc: 'Try to politely change the subject while your driver explains the ice wall.' },
+  { id: 'fun-mechanic-scam', title: 'Blinker Fluid', originalLanguage: 'English', availableLanguages: ['English', 'Pidgin English', 'Russian', 'Arabic'], category: 'Funny', role: 'Shady Mechanic', desc: 'Confront a mechanic who tried to charge you $200 for "blinker fluid."' },
+  { id: 'fun-cat-boss', title: 'Performance Review with a Cat', originalLanguage: 'Dutch', availableLanguages: ['Dutch', 'English', 'Korean'], category: 'Funny', role: 'Mr. Whiskers (CEO)', desc: 'Explain your quarterly KPIs to your boss, who happens to be a cat.' },
+  { id: 'fun-time-traveler', title: 'The Confused Time Traveler', originalLanguage: 'French', availableLanguages: ['French', 'English', 'German', 'Italian'], category: 'Funny', role: '18th Century Peasant', desc: 'Try to explain what a smartphone is to someone from 1789.' },
+  { id: 'fun-alien', title: 'Abduction Negotiation', originalLanguage: 'Hindi', availableLanguages: ['Hindi', 'English', 'Mandarin'], category: 'Funny', role: 'Zorg the Conqueror', desc: 'Convince an alien that Earth isn\'t worth conquering because of our traffic.' },
+  { id: 'fun-zombie', title: 'Zombie Fast Food', originalLanguage: 'Turkish', availableLanguages: ['Turkish', 'English'], category: 'Funny', role: 'Undead Cashier', desc: 'Try to order a burger from a zombie without becoming the meal.' },
+  { id: 'fun-gordon-ramsay', title: 'The Raw Risotto', originalLanguage: 'English', availableLanguages: ['English', 'Italian', 'French'], category: 'Funny', role: 'Angry Celebrity Chef', desc: 'Defend your terrible, mushy risotto on a high-stakes cooking reality show.' },
+  { id: 'fun-bear', title: 'Bear in the Street', originalLanguage: 'Russian', availableLanguages: ALL_LANGUAGES, category: 'Funny', role: 'Unhazed Babushka', desc: 'Panic about a brown bear walking down the street while an old woman feeds it.' }
+];

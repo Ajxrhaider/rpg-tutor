@@ -1,0 +1,11 @@
+import { ALL_LANGUAGES, type ScenarioType } from './types';
+
+export const packGolfScenarios: ScenarioType[] = [
+  { id: 'glf-01', title: 'Sekiro Parry Timing', originalLanguage: 'Japanese', availableLanguages: ['Japanese', 'English', 'Mandarin'], category: 'Gaming', role: 'Elitist Gamer', desc: 'Argue that the parry window against Isshin in Sekiro: Shadows Die Twice is actually too forgiving.' },
+  { id: 'glf-02', title: 'Blood Strike Carry', originalLanguage: 'Pidgin English', availableLanguages: ['Pidgin English', 'English', 'Spanish'], category: 'Gaming', role: 'Squadmate', desc: 'Yell at your teammate for looting while you carry the entire Blood Strike match under the alias Ajxrhaider.' },
+  { id: 'glf-03', title: 'Trauma Engine Specs', originalLanguage: 'English', availableLanguages: ALL_LANGUAGES, category: 'Tech', role: 'Skeptical C++ Dev', desc: 'Defend the Data-Oriented Design of the Trauma Engine and its CPU cache efficiency for legacy hardware.' },
+  { id: 'glf-04', title: 'Nano Machine Lore', originalLanguage: 'Korean', availableLanguages: ['Korean', 'English', 'Mandarin'], category: 'Pop Culture', role: 'Webtoon Fanatic', desc: 'Debate the interconnected Murim lore between Absolute Sword Sense and Nano Machine.' },
+  { id: 'glf-05', title: 'Warframe Prime Grind', originalLanguage: 'Russian', availableLanguages: ['Russian', 'English', 'German'], category: 'Gaming', role: 'Clan Leader', desc: 'Complain about the abysmal drop rates for a specific Prime Warframe chassis in the Void.' },
+  { id: 'glf-06', title: 'Combat Master Movement', originalLanguage: 'Portuguese', availableLanguages: ['Portuguese', 'English'], category: 'Gaming', role: 'Opponent', desc: 'Accuse your opponent of using macros because their Combat Master movement is suspiciously fast.' },
+  { id: 'glf-07', title: 'Zenless Zone Zero Pulls', originalLanguage: 'Mandarin', availableLanguages: ['Mandarin', 'Japanese', 'English'], category: 'Gaming', role: 'Gacha Addict', desc: 'Lament spending all your premium currency in ZZZ and getting absolute garbage.' }
+];
