@@ -1,0 +1,19 @@
+import { ALL_LANGUAGES, type ScenarioType } from './types';
+
+export const packOscarThreeScenarios: ScenarioType[] = [
+  { id: 'ot3-01', title: 'Arguing with Tesla', originalLanguage: 'English', availableLanguages: ALL_LANGUAGES, category: 'Funny', role: 'Nikola Tesla', desc: 'Try to explain Wi-Fi to Nikola Tesla while he yells at you about alternating current.' },
+  { id: 'ot3-02', title: 'Da Vinci\'s Workshop', originalLanguage: 'Italian', availableLanguages: ['Italian', 'English'], category: 'Funny', role: 'Leonardo Da Vinci', desc: 'Critique the Mona Lisa while Da Vinci is still trying to finish the background.' },
+  { id: 'ot3-03', title: 'Shakespearean Heckler', originalLanguage: 'English', availableLanguages: ['English'], category: 'Funny', role: 'William Shakespeare', desc: 'Heckle Shakespeare during the premiere of Hamlet, claiming the pacing is too slow.' },
+  { id: 'ot3-04', title: 'Caesar\'s Crossing', originalLanguage: 'Italian', availableLanguages: ['Italian', 'English'], category: 'Funny', role: 'Julius Caesar', desc: 'Try to convince Caesar that crossing the Rubicon is a massive PR mistake.' },
+  { id: 'ot3-05', title: 'Pirate Ship Mutiny', originalLanguage: 'Spanish', availableLanguages: ['Spanish', 'English'], category: 'Funny', role: 'Blackbeard', desc: 'Complain to Blackbeard that the hardtack is stale and the rum is watered down.' },
+  { id: 'ot3-06', title: 'Pyramid Labor Dispute', originalLanguage: 'Arabic', availableLanguages: ['Arabic', 'English'], category: 'Work', role: 'Pharaoh\'s Overseer', desc: 'Demand better working conditions and more beer for the limestone hauling crew.' },
+  { id: 'ot3-07', title: 'Samurai Duel Delay', originalLanguage: 'Japanese', availableLanguages: ['Japanese', 'English'], category: 'Funny', role: 'Impatient Ronin', desc: 'Apologize for being 3 hours late to a duel to the death because you got lost.' },
+  { id: 'ot3-08', title: 'Wild West Saloon', originalLanguage: 'English', availableLanguages: ALL_LANGUAGES, category: 'Funny', role: 'Suspicious Bartender', desc: 'Order a decaf soy latte in a rugged 1800s cowboy saloon.' },
+  { id: 'ot3-09', title: 'Moon Landing Set', originalLanguage: 'Russian', availableLanguages: ['Russian', 'English'], category: 'Funny', role: 'Stanley Kubrick', desc: 'Argue with the director because the fake moon dust is getting in your space suit.' },
+  { id: 'ot3-10', title: 'Viking Raid Negotiation', originalLanguage: 'German', availableLanguages: ['German', 'English'], category: 'Funny', role: 'Viking Warlord', desc: 'Try to convince a raiding party that your village has absolutely nothing worth stealing.' },
+  { id: 'ot3-11', title: 'Confused T-Rex', originalLanguage: 'Pidgin English', availableLanguages: ['Pidgin English', 'English'], category: 'Funny', role: 'Hungry Dinosaur', desc: 'Try to negotiate your way out of being eaten by a T-Rex using modern legal terms.' },
+  { id: 'ot3-12', title: 'Industrial Revolution', originalLanguage: 'English', availableLanguages: ['English'], category: 'Work', role: 'Factory Foreman', desc: 'Demand a 5-minute lunch break during a 16-hour shift at the textile mill.' },
+  { id: 'ot3-13', title: 'Cold War Spy Drop', originalLanguage: 'Russian', availableLanguages: ['Russian', 'English'], category: 'Funny', role: 'KGB Agent', desc: 'Argue that you are not a spy, you just coincidentally wore a trench coat to the dark alley.' },
+  { id: 'ot3-14', title: '1920s Speakeasy', originalLanguage: 'French', availableLanguages: ['French', 'English'], category: 'Funny', role: 'Mob Boss', desc: 'Explain why you accidentally knocked over the entire shipment of bootleg champagne.' },
+  { id: 'ot3-15', title: 'Trojan Horse Delivery', originalLanguage: 'Greek', availableLanguages: ['Greek', 'English'], category: 'Funny', role: 'Troy Gatekeeper', desc: 'Argue that accepting a giant wooden horse from your mortal enemies is a terrible idea.' }
+];

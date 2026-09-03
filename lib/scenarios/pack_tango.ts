@@ -1,9 +1,6 @@
 import { ALL_LANGUAGES, type ScenarioType } from './types';
 
 export const packTangoScenarios: ScenarioType[] = [
-  { id: 'tgo-01', title: 'Nmap Aggressive Scan', originalLanguage: 'English', availableLanguages: ALL_LANGUAGES, category: 'Tech', role: 'Suspicious IT Director', desc: 'Explain why you were running a -A Nmap scan on the primary corporate subnet.' },
-  { id: 'tgo-02', title: 'Burp Suite Intercept', originalLanguage: 'Russian', availableLanguages: ['Russian', 'English'], category: 'Tech', role: 'Web Developer', desc: 'Show a developer how you easily bypassed their client-side validation using Burp Suite.' },
-  { id: 'tgo-03', title: 'SQLmap False Positive', originalLanguage: 'German', availableLanguages: ['German', 'English'], category: 'Tech', role: 'Database Admin', desc: 'Argue that SQLmap is throwing a false positive and the database is actually secure.' },
   { id: 'tgo-04', title: 'Cracking Hashcat', originalLanguage: 'Mandarin', availableLanguages: ['Mandarin', 'English'], category: 'Tech', role: 'Cybersecurity Student', desc: 'Debate the efficiency of John the Ripper versus Hashcat for offline password cracking.' },
   { id: 'tgo-05', title: 'Wifite Neighborhood', originalLanguage: 'Spanish', availableLanguages: ['Spanish', 'English'], category: 'Tech', role: 'Angry Neighbor', desc: 'Deny that you used Wifite to deauth and capture their Wi-Fi handshake.' },
   { id: 'tgo-06', title: 'Bettercap Spoofing', originalLanguage: 'French', availableLanguages: ['French', 'English'], category: 'Tech', role: 'Cafe Owner', desc: 'Explain why you are running ARP spoofing tests on the public cafe network.' },

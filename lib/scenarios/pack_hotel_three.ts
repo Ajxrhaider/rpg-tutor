@@ -1,0 +1,19 @@
+import { ALL_LANGUAGES, type ScenarioType } from './types';
+
+export const packHotelThreeScenarios: ScenarioType[] = [
+  { id: 'ht3-01', title: 'Missed Stop Panic', originalLanguage: 'German', availableLanguages: ['German', 'English'], category: 'Travel', role: 'Bus Driver', desc: 'Frantically ask the driver to open the doors because you missed your stop.' },
+  { id: 'ht3-02', title: 'Lost in the Louvre', originalLanguage: 'French', availableLanguages: ['French', 'English'], category: 'Travel', role: 'Security Guard', desc: 'Ask for directions to the exit, admitting you are completely turned around.' },
+  { id: 'ht3-03', title: 'Wrong Hotel Location', originalLanguage: 'Japanese', availableLanguages: ['Japanese', 'English'], category: 'Travel', role: 'Receptionist', desc: 'Realize you booked the hotel in the wrong city and beg for a cancellation.' },
+  { id: 'ht3-04', title: 'Fake Tour Guide', originalLanguage: 'Arabic', availableLanguages: ['Arabic', 'English'], category: 'Incidents', role: 'Scammer', desc: 'Refuse to pay a random person who walked next to you and claims to be a guide.' },
+  { id: 'ht3-05', title: 'Overweight Luggage', originalLanguage: 'Spanish', availableLanguages: ['Spanish', 'English'], category: 'Travel', role: 'Airline Agent', desc: 'Try to put on four layers of clothing to avoid paying a $100 heavy bag fee.' },
+  { id: 'ht3-06', title: 'Hostel Fridge Theft', originalLanguage: 'Italian', availableLanguages: ['Italian', 'English'], category: 'Travel', role: 'Guilty Backpacker', desc: 'Confront the guy who clearly ate your labeled leftovers from the shared fridge.' },
+  { id: 'ht3-07', title: 'Broken ATM Machine', originalLanguage: 'Russian', availableLanguages: ['Russian', 'English'], category: 'Incidents', role: 'Bank Teller', desc: 'Report that the machine outside just swallowed your debit card on a Friday evening.' },
+  { id: 'ht3-08', title: 'Translating the Menu', originalLanguage: 'Korean', availableLanguages: ['Korean', 'English'], category: 'Dining', role: 'Impatient Waiter', desc: 'Struggle to use your phone to translate a massive menu while the waiter sighs.' },
+  { id: 'ht3-09', title: 'Lost Passport on Train', originalLanguage: 'Dutch', availableLanguages: ['Dutch', 'English'], category: 'Incidents', role: 'Transit Police', desc: 'Explain that your passport fell out of your pocket on the intercity train.' },
+  { id: 'ht3-10', title: 'Food Poisoning abroad', originalLanguage: 'Portuguese', availableLanguages: ['Portuguese', 'English'], category: 'Incidents', role: 'Pharmacist', desc: 'Beg for the strongest stomach medicine they have without a prescription.' },
+  { id: 'ht3-11', title: 'Taking the Wrong Bus', originalLanguage: 'Mandarin', availableLanguages: ['Mandarin', 'English'], category: 'Travel', role: 'Passenger', desc: 'Ask if this bus is actually going to the city center or heading into the suburbs.' },
+  { id: 'ht3-12', title: 'Train Toilet Broken', originalLanguage: 'Hindi', availableLanguages: ['Hindi', 'English'], category: 'Travel', role: 'Conductor', desc: 'Ask how long until the next station because every restroom on board is broken.' },
+  { id: 'ht3-13', title: 'Rental Car Scratch', originalLanguage: 'Turkish', availableLanguages: ['Turkish', 'English'], category: 'Travel', role: 'Rental Agent', desc: 'Argue that the massive scratch on the bumper was definitely there when you rented it.' },
+  { id: 'ht3-14', title: 'Stranded by Ferry', originalLanguage: 'Pidgin English', availableLanguages: ['Pidgin English', 'English'], category: 'Travel', role: 'Dock Worker', desc: 'Beg a local boat owner to take you across because you missed the final ferry.' },
+  { id: 'ht3-15', title: 'Sleeping in the Airport', originalLanguage: 'English', availableLanguages: ALL_LANGUAGES, category: 'Travel', role: 'Security Guard', desc: 'Beg the guard not to kick you out of the terminal while waiting for a 6 AM flight.' }
+];

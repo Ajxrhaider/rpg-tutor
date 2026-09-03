@@ -1,0 +1,14 @@
+import { ALL_LANGUAGES, type ScenarioType } from './types';
+
+export const packBravoThreeScenarios: ScenarioType[] = [
+  { id: 'bt3-03', title: 'Demonic Path Superiority', originalLanguage: 'Japanese', availableLanguages: ['Japanese', 'English'], category: 'Pop Culture', role: 'Orthodox Monk', desc: 'Debate why Demonic Cultivation is vastly superior to traditional Qi techniques.' },
+  { id: 'bt3-04', title: 'Hanlim Gym Crossover', originalLanguage: 'English', availableLanguages: ALL_LANGUAGES, category: 'Pop Culture', role: 'BlueString Fan', desc: 'Explain how the timeline of Hanlim Gym directly affects the events of Study Group.' },
+  { id: 'bt3-05', title: 'Reawakened Man Logic', originalLanguage: 'French', availableLanguages: ['French', 'English'], category: 'Pop Culture', role: 'Skeptical Reader', desc: 'Defend the chaotic revival mechanics of Reawakened Man against someone who says it makes no sense.' },
+  { id: 'bt3-06', title: 'Myst, Might, Mayhem', originalLanguage: 'Spanish', availableLanguages: ['Spanish', 'English'], category: 'Pop Culture', role: 'Lore Junkie', desc: 'Connect the hidden Easter eggs in Myst, Might, Mayhem to other Han Joong Wueol Ya works.' },
+  { id: 'bt3-07', title: 'Spy x Family Identity', originalLanguage: 'German', availableLanguages: ['German', 'English'], category: 'Pop Culture', role: 'Theorist', desc: 'Theorize what will happen the exact moment Loid realizes Yor is a legendary assassin.' },
+  { id: 'bt3-08', title: 'Chainsaw Man Angst', originalLanguage: 'Russian', availableLanguages: ['Russian', 'English'], category: 'Pop Culture', role: 'Traumatized Fan', desc: 'Rant about how Fujimoto refuses to let his main characters be happy for more than two panels.' },
+  { id: 'bt3-12', title: 'Buying Counterfeit Manga', originalLanguage: 'Portuguese', availableLanguages: ['Portuguese', 'English'], category: 'Shopping', role: 'Street Vendor', desc: 'Argue with a vendor selling a poorly translated, highly pixelated physical copy of an ongoing Webtoon.' },
+  { id: 'bt3-13', title: 'Manga Spoiler in Line', originalLanguage: 'Arabic', availableLanguages: ['Arabic', 'English'], category: 'Everyday', role: 'Loud Otaku', desc: 'Ask the person in front of you at the convention to stop loudly spoiling the latest chapter.' },
+  { id: 'bt3-14', title: 'Invincible Mumu Feats', originalLanguage: 'Hindi', availableLanguages: ['Hindi', 'English'], category: 'Pop Culture', role: 'Power Scaler', desc: 'Argue about Mumu\'s raw physical strength compared to traditional Dantian users.' },
+  { id: 'bt3-15', title: 'Cosplay Prop Confiscation', originalLanguage: 'Turkish', availableLanguages: ['Turkish', 'English'], category: 'Incidents', role: 'Security Guard', desc: 'Argue that your massive Murim broadsword is made of foam and is not a lethal weapon.' }
+];

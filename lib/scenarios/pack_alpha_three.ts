@@ -1,0 +1,12 @@
+import { ALL_LANGUAGES, type ScenarioType } from './types';
+
+export const packAlphaThreeScenarios: ScenarioType[] = [
+  { id: 'at3-01', title: 'Kioxia SSD Speed', originalLanguage: 'English', availableLanguages: ALL_LANGUAGES, category: 'Tech', role: 'PC Builder', desc: 'Flex about the read/write speeds of your Gen 4 NVMe compared to their old SATA drive.' },
+  { id: 'at3-03', title: 'Combat Master Loadout', originalLanguage: 'Spanish', availableLanguages: ['Spanish', 'English'], category: 'Gaming', role: 'Esports Coach', desc: 'Argue why your specific SMG build is the objective meta in Combat Master.' },
+  { id: 'at3-05', title: 'Blood Strike Ping', originalLanguage: 'Pidgin English', availableLanguages: ['Pidgin English', 'English'], category: 'Gaming', role: 'Squadmate', desc: 'Yell at your squad for pushing without you while you were lagging at 400ms ping.' },
+  { id: 'at3-07', title: 'DaVinci Resolve Lag', originalLanguage: 'Japanese', availableLanguages: ['Japanese', 'English'], category: 'Tech', role: 'Video Editor', desc: 'Complain that DaVinci Resolve is lagging heavily despite your 32GB dual-channel RAM.' },
+  { id: 'at3-11', title: 'Fallout New Vegas Mod List', originalLanguage: 'Dutch', availableLanguages: ['Dutch', 'English'], category: 'Gaming', role: 'Modder', desc: 'Beg for help untangling a 150-mod load order that crashes as soon as you leave Doc Mitchell\'s house.' },
+  { id: 'at3-12', title: 'Warframe Trading Scam', originalLanguage: 'Portuguese', availableLanguages: ['Portuguese', 'English'], category: 'Gaming', role: 'Shady Player', desc: 'Call out a player in trade chat who is trying to sell you a vaulted prime part for 1,000 Platinum.' },
+  { id: 'at3-14', title: 'Shadow Fight 3 P2W', originalLanguage: 'Hindi', availableLanguages: ['Hindi', 'English'], category: 'Gaming', role: 'Game Defender', desc: 'Argue that Shadow Fight 3\'s late-game progression is fundamentally pay-to-win.' },
+  { id: 'at3-15', title: 'Asphalt Legends Disconnect', originalLanguage: 'Turkish', availableLanguages: ['Turkish', 'English'], category: 'Gaming', role: 'Opponent', desc: 'Accuse the player in first place of using a lag switch right before the finish line.' }
+];

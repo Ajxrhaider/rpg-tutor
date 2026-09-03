@@ -1,0 +1,13 @@
+import { ALL_LANGUAGES, type ScenarioType } from './types';
+
+export const packFoxtrotThreeScenarios: ScenarioType[] = [
+  { id: 'ft3-01', title: 'Nano Machine Twist', originalLanguage: 'Korean', availableLanguages: ['Korean', 'English', 'Mandarin'], category: 'Pop Culture', role: 'Webtoon Critic', desc: 'Argue about the timeline implications of the Nano Machine ending.' },
+  { id: 'ft3-03', title: 'Spy x Family Identity', originalLanguage: 'French', availableLanguages: ['French', 'English'], category: 'Pop Culture', role: 'Manga Theorist', desc: 'Debate what will happen when Loid finally realizes Yor is an assassin.' },
+  { id: 'ft3-09', title: 'Demonic Cult Superiority', originalLanguage: 'Mandarin', availableLanguages: ['Mandarin', 'English'], category: 'Pop Culture', role: 'Orthodox Monk', desc: 'Debate why Murim Demonic Cultivation is more efficient than Orthodox Qi.' },
+  { id: 'ft3-10', title: 'Fake Cosplay Prop', originalLanguage: 'Russian', availableLanguages: ['Russian', 'English'], category: 'Incidents', role: 'Con Security', desc: 'Prove that your massive foam broadsword is not actually a lethal weapon.' },
+  { id: 'ft3-11', title: 'Overpriced Figures', originalLanguage: 'Dutch', availableLanguages: ['Dutch', 'English'], category: 'Shopping', role: 'Merch Vendor', desc: 'Haggle over the ridiculous $200 markup on an imported anime scale figure.' },
+  { id: 'ft3-12', title: 'Manga Translation Error', originalLanguage: 'Arabic', availableLanguages: ['Arabic', 'English'], category: 'Pop Culture', role: 'Scanlation Admin', desc: 'Argue over the accurate translation of a highly specific martial arts technique.' },
+  { id: 'ft3-13', title: 'Stolen Fan Art', originalLanguage: 'Hindi', availableLanguages: ['Hindi', 'English'], category: 'Work', role: 'Art Thief', desc: 'Confront an online account that is selling prints of your digital anime fan art.' },
+  { id: 'ft3-14', title: 'Filler Arc Defense', originalLanguage: 'Turkish', availableLanguages: ['Turkish', 'English'], category: 'Pop Culture', role: 'Anime Purist', desc: 'Explain why someone actually shouldn\'t skip the 50-episode filler arc.' },
+  { id: 'ft3-15', title: 'Crying Over Anime', originalLanguage: 'Pidgin English', availableLanguages: ['Pidgin English', 'English'], category: 'Everyday', role: 'Judgmental Sibling', desc: 'Defend yourself after being caught sobbing over a tragic anime character death.' }
+];

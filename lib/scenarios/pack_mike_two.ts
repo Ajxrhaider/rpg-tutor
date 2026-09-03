@@ -1,0 +1,14 @@
+import { ALL_LANGUAGES, type ScenarioType } from './types';
+
+export const packMikeTwoScenarios: ScenarioType[] = [
+  { id: 'mtw-02', title: 'Tailwind vs Vanilla CSS', originalLanguage: 'French', availableLanguages: ['French', 'English'], category: 'Tech', role: 'CSS Purist', desc: 'Defend your use of 40 utility classes on a single div to a developer who only writes pure CSS.' },
+  { id: 'mtw-03', title: 'Vite Build Failure', originalLanguage: 'German', availableLanguages: ['German', 'English'], category: 'Tech', role: 'DevOps Engineer', desc: 'Troubleshoot a Vite build that works perfectly on your local machine but fails instantly on Vercel.' },
+  { id: 'mtw-04', title: 'SQLite Locked Database', originalLanguage: 'Spanish', availableLanguages: ['Spanish', 'English'], category: 'Tech', role: 'Frustrated User', desc: 'Explain to a user why the Voix ERP system threw a "database is locked" error during a concurrent write.' },
+  { id: 'mtw-05', title: 'Soundtrap Latency', originalLanguage: 'Japanese', availableLanguages: ['Japanese', 'English'], category: 'Music', role: 'Vocalist', desc: 'Apologize to your recording artist because browser latency is ruining their vocal timing.' },
+  { id: 'mtw-06', title: 'DaVinci Render Crash', originalLanguage: 'Italian', availableLanguages: ['Italian', 'English'], category: 'Tech', role: 'Impatient Client', desc: 'Explain that the video export will be late because DaVinci Resolve ran out of VRAM at 99%.' },
+  { id: 'mtw-07', title: 'FreeFileSync Overwrite', originalLanguage: 'Russian', availableLanguages: ['Russian', 'English'], category: 'Tech', role: 'Angry Client', desc: 'Explain how you accidentally set RealTimeSync to mirror the wrong folder and deleted their backup.' },
+  { id: 'mtw-08', title: 'Bettercap Detected', originalLanguage: 'Pidgin English', availableLanguages: ['Pidgin English', 'English'], category: 'Tech', role: 'Network Admin', desc: 'Deny all knowledge after the network intrusion detection system flags your ARP spoofing test.' },
+  { id: 'mtw-12', title: 'Hashcat Dictionary Size', originalLanguage: 'Portuguese', availableLanguages: ['Portuguese', 'English'], category: 'Tech', role: 'Impatient Friend', desc: 'Explain why cracking their forgotten ZIP password will take 400 years with a basic dictionary.' },
+  { id: 'mtw-13', title: 'SvelteKit Superiority', originalLanguage: 'Arabic', availableLanguages: ['Arabic', 'English'], category: 'Tech', role: 'React Developer', desc: 'Try to convince a hardcore React dev that SvelteKit\'s compiler approach is vastly superior.' },
+  { id: 'mtw-15', title: 'Git Push Force', originalLanguage: 'Turkish', availableLanguages: ['Turkish', 'English'], category: 'Tech', role: 'Lead Developer', desc: 'Defend your decision to `git push --force` to the main branch on a Friday afternoon.' }
+];

@@ -1,0 +1,16 @@
+import { ALL_LANGUAGES, type ScenarioType } from './types';
+
+export const packZuluTwoScenarios: ScenarioType[] = [
+  { id: 'ztw-02', title: 'SvelteKit Reactivity', originalLanguage: 'Spanish', availableLanguages: ['Spanish', 'English'], category: 'Tech', role: 'React Dev', desc: 'Explain how SvelteKit\'s rune system is objectively cleaner than React\'s dependency arrays.' },
+  { id: 'ztw-04', title: 'Ubuntu 26 LTS Bluetooth', originalLanguage: 'German', availableLanguages: ['German', 'English'], category: 'Tech', role: 'Linux Hater', desc: 'Try to fix your Bluetooth audio mid-conversation while defending Ubuntu\'s stability.' },
+  { id: 'ztw-05', title: 'Tailwind CSS File Size', originalLanguage: 'French', availableLanguages: ['French', 'English'], category: 'Tech', role: 'Performance Auditor', desc: 'Explain that the PostCSS purge step means Tailwind isn\'t actually bloating the final bundle.' },
+  { id: 'ztw-06', title: 'The Memory Leak', originalLanguage: 'Russian', availableLanguages: ['Russian', 'English'], category: 'Tech', role: 'QA Tester', desc: 'Deny that your latest pull request caused the server memory to spike to 100%.' },
+  { id: 'ztw-07', title: 'Git Stash Panic', originalLanguage: 'Mandarin', availableLanguages: ['Mandarin', 'English'], category: 'Tech', role: 'Senior Engineer', desc: 'Beg for help recovering code you accidentally dropped from your Git stash.' },
+  { id: 'ztw-09', title: 'Sublime Text Flex', originalLanguage: 'Italian', availableLanguages: ['Italian', 'English'], category: 'Tech', role: 'VS Code User', desc: 'Defend your use of Sublime Text in 2026 because "it opens instantly and doesn\'t use 4GB of RAM."' },
+  { id: 'ztw-10', title: 'Pipeline Failure', originalLanguage: 'Dutch', availableLanguages: ['Dutch', 'English'], category: 'Tech', role: 'DevOps Lead', desc: 'Explain why your commit just broke the main CI/CD pipeline for the entire team.' },
+  { id: 'ztw-11', title: 'Unreadable Python', originalLanguage: 'Pidgin English', availableLanguages: ['Pidgin English', 'English'], category: 'Tech', role: 'Data Scientist', desc: 'Apologize for writing a data-scraping script completely comprised of nested list comprehensions.' },
+  { id: 'ztw-12', title: 'Missing API Key', originalLanguage: 'Portuguese', availableLanguages: ['Portuguese', 'English'], category: 'Tech', role: 'Project Manager', desc: 'Admit that the demo failed because you forgot to add the Groq API key to Vercel.' },
+  { id: 'ztw-13', title: 'PHP is not Dead', originalLanguage: 'Arabic', availableLanguages: ['Arabic', 'English'], category: 'Tech', role: 'Bootcamp Grad', desc: 'Aggressively defend modern PHP 8 architecture to someone who only knows Node.js.' },
+  { id: 'ztw-14', title: 'The Forgotten Console.log', originalLanguage: 'Hindi', availableLanguages: ['Hindi', 'English'], category: 'Tech', role: 'Code Reviewer', desc: 'Explain why there is a `console.log("here 4")` in the production codebase.' },
+  { id: 'ztw-15', title: 'Over-engineered Code', originalLanguage: 'Turkish', availableLanguages: ['Turkish', 'English'], category: 'Tech', role: 'Pragmatic Dev', desc: 'Defend your 12-file abstraction layer for a button component.' }
+];

@@ -1,0 +1,15 @@
+import { ALL_LANGUAGES, type ScenarioType } from './types';
+
+export const packNovemberTwoScenarios: ScenarioType[] = [
+  { id: 'ntw-02', title: 'Sekiro Final Boss', originalLanguage: 'Japanese', availableLanguages: ['Japanese', 'English'], category: 'Gaming', role: 'Smug Streamer', desc: 'Argue that Isshin the Sword Saint is mechanically unfair, not just "a skill issue."' },
+  { id: 'ntw-03', title: 'Combat Master Glitch', originalLanguage: 'Russian', availableLanguages: ['Russian', 'English'], category: 'Gaming', role: 'Opponent', desc: 'Defend yourself against accusations of speed-hacking because you mastered the slide-cancel movement.' },
+  { id: 'ntw-04', title: 'Shadow Fight 3 Drop Rates', originalLanguage: 'English', availableLanguages: ALL_LANGUAGES, category: 'Gaming', role: 'Game Developer', desc: 'Complain bitterly about opening 50 premium chests and not getting the legendary armor set.' },
+  { id: 'ntw-05', title: 'Warframe Farming Salt', originalLanguage: 'Spanish', availableLanguages: ['Spanish', 'English'], category: 'Gaming', role: 'Squad Leader', desc: 'Yell at your squad for extracting at wave 5 during an endless Orokin Derelict defense mission.' },
+  { id: 'ntw-06', title: 'ZZZ Banner Pity', originalLanguage: 'Korean', availableLanguages: ['Korean', 'English'], category: 'Gaming', role: 'F2P Player', desc: 'Try to justify spending $100 to hit the guaranteed pity drop in Zenless Zone Zero.' },
+  { id: 'ntw-07', title: 'Nano Machine Twist', originalLanguage: 'Mandarin', availableLanguages: ['Mandarin', 'English'], category: 'Pop Culture', role: 'New Reader', desc: 'Refuse to spoil the massive plot twist involving Cheon Yeo-Woon\'s descendant.' },
+  { id: 'ntw-08', title: 'BlueString Crossover', originalLanguage: 'French', availableLanguages: ['French', 'English'], category: 'Pop Culture', role: 'Webtoon Critic', desc: 'Argue about the timeline inconsistencies when Hanlim Gym characters show up in Study Group.' },
+  { id: 'ntw-11', title: 'Chainsaw Man Trauma', originalLanguage: 'German', availableLanguages: ['German', 'English'], category: 'Pop Culture', role: 'Manga Reader', desc: 'Comfort a friend who just watched the snowball fight episode for the first time.' },
+  { id: 'ntw-12', title: 'Record of Ragnarok Roster', originalLanguage: 'Dutch', availableLanguages: ['Dutch', 'English'], category: 'Pop Culture', role: 'History Buff', desc: 'Argue that a different historical warrior would have been a better choice for humanity\'s vanguard.' },
+  { id: 'ntw-13', title: 'Brick Breaker Dev', originalLanguage: 'Arabic', availableLanguages: ['Arabic', 'English'], category: 'Tech', role: 'Harsh Critic', desc: 'Defend the physics logic in the indie brick breaker game you built with your friends.' },
+  { id: 'ntw-15', title: 'Simkl API Limit', originalLanguage: 'Turkish', availableLanguages: ['Turkish', 'English'], category: 'Tech', role: 'API Support', desc: 'Beg Simkl support to raise the rate limit for your Otaku Sync tracking app.' }
+];

@@ -1,0 +1,17 @@
+import { ALL_LANGUAGES, type ScenarioType } from './types';
+
+export const packGolfThreeScenarios: ScenarioType[] = [
+  { id: 'gt3-02', title: 'Combat Master Ping', originalLanguage: 'Russian', availableLanguages: ['Russian', 'English'], category: 'Gaming', role: 'Salty Opponent', desc: 'Defend yourself against accusations that your movement tech is actually a lag switch.' },
+  { id: 'gt3-04', title: 'Warframe Scam', originalLanguage: 'Spanish', availableLanguages: ['Spanish', 'English'], category: 'Gaming', role: 'Trade Chat Scammer', desc: 'Call out a player trying to sell a vaulted Prime blueprint for an absurd amount of Platinum.' },
+  { id: 'gt3-05', title: 'Fallout Mod Crash', originalLanguage: 'English', availableLanguages: ALL_LANGUAGES, category: 'Gaming', role: 'Nexus Mods User', desc: 'Beg for help fixing a 200-mod load order in Fallout: New Vegas that crashes on startup.' },
+  { id: 'gt3-06', title: 'DMC SSS Rank', originalLanguage: 'Italian', availableLanguages: ['Italian', 'English'], category: 'Gaming', role: 'Button Masher', desc: 'Argue that achieving an SSS rank in Devil May Cry 5 actually takes skill.' },
+  { id: 'gt3-07', title: 'Plague Inc Greenland', originalLanguage: 'German', availableLanguages: ['German', 'English'], category: 'Gaming', role: 'Armchair Scientist', desc: 'Debate why starting your virus in Greenland is a terrible opening strategy.' },
+  { id: 'gt3-08', title: 'Shadow Fight 3 P2W', originalLanguage: 'French', availableLanguages: ['French', 'English'], category: 'Gaming', role: 'Game Dev', desc: 'Complain about the impossible progression wall and demand a drop rate buff.' },
+  { id: 'gt3-09', title: 'WoT Artillery Focus', originalLanguage: 'Portuguese', availableLanguages: ['Portuguese', 'English'], category: 'Gaming', role: 'Artillery Player', desc: 'Complain bitterly about being focused by artillery for the entire World of Tanks match.' },
+  { id: 'gt3-10', title: 'Asphalt Legends Whales', originalLanguage: 'Mandarin', availableLanguages: ['Mandarin', 'English'], category: 'Gaming', role: 'Pay-to-Win Player', desc: 'Argue that multiplayer is entirely broken by people who buy maximum upgrades.' },
+  { id: 'gt3-11', title: 'SF4 Arena Spammer', originalLanguage: 'Turkish', availableLanguages: ['Turkish', 'English'], category: 'Gaming', role: 'Corner Camper', desc: 'Trash talk a player who just backs into the corner and spams projectiles.' },
+  { id: 'gt3-12', title: 'Nuzlocke Critical Hit', originalLanguage: 'Dutch', availableLanguages: ['Dutch', 'English'], category: 'Gaming', role: 'Twitch Chat', desc: 'Mourn the loss of your starter Pokémon to a random critical hit in Fire Red.' },
+  { id: 'gt3-13', title: 'Broken Controller Drift', originalLanguage: 'Korean', availableLanguages: ['Korean', 'English'], category: 'Tech', role: 'Store Clerk', desc: 'Demand a warranty replacement for a controller that has unplayable stick drift.' },
+  { id: 'gt3-14', title: 'Stolen Kill Execution', originalLanguage: 'Arabic', availableLanguages: ['Arabic', 'English'], category: 'Gaming', role: 'Teammate', desc: 'Yell at your friend for shooting the guy you were in the middle of executing.' },
+  { id: 'gt3-15', title: 'Corrupted RPG Save', originalLanguage: 'Hindi', availableLanguages: ['Hindi', 'English'], category: 'Gaming', role: 'Clueless Sibling', desc: 'Interrogate your sibling who accidentally overwrote your 150-hour save file.' }
+];

@@ -1,0 +1,16 @@
+import { ALL_LANGUAGES, type ScenarioType } from './types';
+
+export const packPapaTwoScenarios: ScenarioType[] = [
+  { id: 'ptw-03', title: 'Buying the Redmi 15', originalLanguage: 'Mandarin', availableLanguages: ['Mandarin', 'English'], category: 'Shopping', role: 'Mobile Vendor', desc: 'Haggle over the price of a Midnight Black Xiaomi Redmi 15 4G with 128GB storage.' },
+  { id: 'ptw-04', title: 'Laptop RAM Upgrade', originalLanguage: 'German', availableLanguages: ['German', 'English'], category: 'Tech', role: 'PC Shop Clerk', desc: 'Verify that the DDR4 stick you are buying is definitely 3200MT/s to match your Dell.' },
+  { id: 'ptw-05', title: 'Pineapple Pizza Crime', originalLanguage: 'Italian', availableLanguages: ['Italian', 'English'], category: 'Dining', role: 'Offended Pizzaiolo', desc: 'Defend your right to order a pizza with pineapple, jalapeños, and extra garlic.' },
+  { id: 'ptw-06', title: 'Computer Village Hustle', originalLanguage: 'Pidgin English', availableLanguages: ['Pidgin English', 'English'], category: 'Shopping', role: 'Aggressive Hawker', desc: 'Try to walk through a tech market without being dragged into a store to buy a flash drive.' },
+  { id: 'ptw-08', title: 'Flat Earther Uber', originalLanguage: 'Russian', availableLanguages: ['Russian', 'English'], category: 'Funny', role: 'Conspiracy Theorist Driver', desc: 'Smile and nod while your driver explains how the moon landing was filmed on Mars.' },
+  { id: 'ptw-09', title: 'Dropped Phone Panic', originalLanguage: 'Spanish', availableLanguages: ['Spanish', 'English'], category: 'Incidents', role: 'Sympathetic Stranger', desc: 'React after dropping your brand new phone face-down on the concrete.' },
+  { id: 'ptw-10', title: 'Bumping the Glass Door', originalLanguage: 'French', availableLanguages: ['French', 'English'], category: 'Incidents', role: 'Security Guard', desc: 'Pretend you are totally fine after walking face-first into a spotless glass door.' },
+  { id: 'ptw-11', title: 'The Awkward Wave', originalLanguage: 'Korean', availableLanguages: ['Korean', 'English'], category: 'Everyday', role: 'Stranger', desc: 'Try to play it off after enthusiastically waving at someone who was waving to the person behind you.' },
+  { id: 'ptw-12', title: 'Forgot Their Name', originalLanguage: 'Portuguese', availableLanguages: ['Portuguese', 'English'], category: 'Everyday', role: 'Acquaintance', desc: 'Stall for time because you are 10 minutes into a conversation and have no idea what their name is.' },
+  { id: 'ptw-13', title: 'Tripping on the Stairs', originalLanguage: 'Dutch', availableLanguages: ['Dutch', 'English'], category: 'Everyday', role: 'Crowd of People', desc: 'Recover your dignity after loudly tripping up a flight of stairs in public.' },
+  { id: 'ptw-14', title: 'Gym Spotter Failure', originalLanguage: 'Hindi', availableLanguages: ['Hindi', 'English'], category: 'Everyday', role: 'Huge Bodybuilder', desc: 'Apologize for completely failing to lift the bar while spotting someone on the bench press.' },
+  { id: 'ptw-15', title: 'Arguing with a Pigeon', originalLanguage: 'Turkish', availableLanguages: ['Turkish', 'English'], category: 'Funny', role: 'A Very Smart Pigeon', desc: 'Defend your bagel against an incredibly aggressive and articulate street bird.' }
+];

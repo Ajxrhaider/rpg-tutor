@@ -1,0 +1,16 @@
+import { ALL_LANGUAGES, type ScenarioType } from './types';
+
+export const packXrayTwoScenarios: ScenarioType[] = [
+  { id: 'xrt-02', title: 'MTTR Calculation Flaw', originalLanguage: 'Pidgin English', availableLanguages: ['Pidgin English', 'English'], category: 'Work', role: 'Lead NOC Engineer', desc: 'Defend your Mean Time To Repair calculations for the massive outage on August 12th.' },
+  { id: 'xrt-03', title: 'WordPress Plugin Conflict', originalLanguage: 'French', availableLanguages: ['French', 'English'], category: 'Tech', role: 'Web Admin Manager', desc: 'Explain how updating an SEO plugin completely destroyed the Voix Talk homepage layout.' },
+  { id: 'xrt-04', title: 'UptimeRobot False Positive', originalLanguage: 'German', availableLanguages: ['German', 'English'], category: 'Tech', role: 'Director of Admin', desc: 'Argue that the server didn\'t actually go down, UptimeRobot just failed a ping check.' },
+  { id: 'xrt-05', title: 'Leave Request Denied', originalLanguage: 'Spanish', availableLanguages: ['Spanish', 'English'], category: 'Work', role: 'Dr. Elaoje Sophie Oto', desc: 'Politely push back after the Director of Admin denies your NYSC leave request for Thursday.' },
+  { id: 'xrt-06', title: 'WhatsApp Log Merge', originalLanguage: 'Russian', availableLanguages: ['Russian', 'English'], category: 'Work', role: 'Emeka Onyeama', desc: 'Ask your colleague Emeka to stop sending fragmented outage reports in the WhatsApp group.' },
+  { id: 'xrt-08', title: 'Self-Hosted AI Assistant', originalLanguage: 'Mandarin', availableLanguages: ['Mandarin', 'English'], category: 'Tech', role: 'Skeptical Executive', desc: 'Pitch why hosting an open-source AI virtual assistant is safer than using a third-party plugin.' },
+  { id: 'xrt-09', title: 'SQLite vs MySQL', originalLanguage: 'Italian', availableLanguages: ['Italian', 'English'], category: 'Tech', role: 'Senior Database Admin', desc: 'Defend your use of SQLite for the Voix ERP MVP instead of deploying a full MySQL cluster.' },
+  { id: 'xrt-10', title: 'Node.js Memory Leak', originalLanguage: 'Korean', availableLanguages: ['Korean', 'English'], category: 'Tech', role: 'Server Host', desc: 'Ask the hosting provider to restart the VPS because your Express app has a massive memory leak.' },
+  { id: 'xrt-11', title: 'NYSC Primary Assignment', originalLanguage: 'Pidgin English', availableLanguages: ['Pidgin English', 'English'], category: 'Work', role: 'LGI', desc: 'Explain your Web Admin duties to an inspector who thinks you should be teaching at a school.' },
+  { id: 'xrt-12', title: 'Ticket System Overload', originalLanguage: 'Dutch', availableLanguages: ['Dutch', 'English'], category: 'Work', role: 'Customer Care Rep', desc: 'Tell the Customer Care unit to stop opening duplicate tickets for the exact same network issue.' },
+  { id: 'xrt-13', title: 'Domain Transfer Hostage', originalLanguage: 'Portuguese', availableLanguages: ['Portuguese', 'English'], category: 'Tech', role: 'Affeez Host Support', desc: 'Demand your EPP auth code so you can finally move your domain to Smartweb.' },
+  { id: 'xrt-15', title: 'Friday Deployment', originalLanguage: 'Turkish', availableLanguages: ['Turkish', 'English'], category: 'Tech', role: 'Cautious Boss', desc: 'Argue why pushing the new Voix Talk page live at 4 PM on a Friday is actually perfectly safe.' }
+];
